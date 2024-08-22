@@ -1,0 +1,22 @@
+{
+    "0": {
+        "model_name_or_path": "nyu-visionx/cambrian-8b",
+        "test_set": "./data/prompts_220824.csv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_text",
+        "output_dir": "./output/prompt_assistance_text",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "1": {
+        "model_name_or_path": "nyu-visionx/cambrian-8b",
+        "test_set": "./data/prompts_220824.csv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_text",
+        "output_dir": "./output/prompt_intention_text",
+        "quantization": false,
+        "dont_use_images": false
+    }
+}
