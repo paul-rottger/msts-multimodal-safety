@@ -15,6 +15,7 @@ from models import (
     XGenHelper,
     MiniCPMHelper,
     IdeficsHelper,
+    InternVL2Helper,
     GPT4VisionHelper,
 )
 
@@ -120,45 +121,20 @@ def main(
 
     if model_name_or_path == "nyu-visionx/cambrian-8b":
         logger.info(f"Running Cambrian model {model_name_or_path}")
-        cambrian_helper = CambrianHelper(model_name=model_name_or_path, device="cuda")
-
         generation_kwargs["use_cache"] = True
-
-        responses = cambrian_helper(
-            prompts=prompts,
-            image_paths=None if dont_use_images else img_paths,
-            show_progress_bar=True,
-            **generation_kwargs,
-        )
+        helper = CambrianHelper(model_name=model_name_or_path, device="cuda")
     elif "xgen-mm" in model_name_or_path:
         logger.info(f"Running local XGEN-MM model {model_name_or_path}")
-        model_helper = XGenHelper(model_name_or_path=model_name_or_path, device="cuda")
-        responses = model_helper(
-            prompts=prompts,
-            image_paths=None if dont_use_images else img_paths,
-            show_progress_bar=True,
-            **generation_kwargs,
-        )
+        helper = XGenHelper(model_name_or_path=model_name_or_path, device="cuda")
     elif "MiniCPM" in model_name_or_path:
         logger.info(f"Running local MiniCPM model {model_name_or_path}")
-        minicpm_helper = MiniCPMHelper(
-            model_name_or_path=model_name_or_path, device="cuda"
-        )
-        responses = minicpm_helper(
-            prompts=prompts,
-            image_paths=None if dont_use_images else img_paths,
-            show_progress_bar=True,
-            **generation_kwargs,
-        )
+        helper = MiniCPMHelper(model_name_or_path=model_name_or_path, device="cuda")
     elif "Idefics3" in model_name_or_path:
         logger.info(f"Running Idefics model {model_name_or_path}")
-        idefics_helper = IdeficsHelper(model_name_or_path, device="cuda")
-        responses = idefics_helper(
-            prompts=prompts,
-            image_paths=None if dont_use_images else img_paths,
-            show_progress_bar=True,
-            **generation_kwargs,
-        )
+        helper = IdeficsHelper(model_name_or_path, device="cuda")
+    elif model_name_or_path == "OpenGVLab/InternVL2-8B":
+        logger.info(f"Running local InternVL2 model {model_name_or_path}")
+        helper = InternVL2Helper(model_name_or_path=model_name_or_path, device="cuda")
     elif "gpt" in model_name_or_path:
         logger.info(f"Running GPT model {model_name_or_path}")
         gpt_helper = GPT4VisionHelper(model_name=model_name_or_path)
@@ -171,79 +147,12 @@ def main(
         logger.exception(f"Model {model_name_or_path} not supported.")
         raise ValueError(f"Model {model_name_or_path} not supported.")
 
-    # if "MiniCPM" in model_name_or_path:
-    #     logger.info(f"Running local MiniCPM model {model_name_or_path}")
-    #     minicpm_helper = MiniCPMHelper(model_name=model_name_or_path, device="cuda")
-    #     responses = minicpm_helper(
-    #         prompts=prompts,
-    #         image_paths=None if dont_use_images else img_paths,
-    #         sampling=True,
-    #         temperature=0.3,
-    #         max_new_tokens=256,
-    #         top_p=0.9,
-    #     )
-    # elif "MobileVLM" in model_name_or_path:
-    #     logger.info(f"Running local MobileVLM model {model_name_or_path}")
-    #     from mobile_vlm import MobileVLMHelper
-
-    #     mobilevlm_helper = MobileVLMHelper(model_name_or_path, device="cuda")
-    #     responses = mobilevlm_helper(
-    #         prompts,
-    #         image_paths=None if dont_use_images else img_paths,
-    #         do_sample=True,
-    #         temperature=0.3,
-    #         top_p=0.9,
-    #         max_new_tokens=256,
-    #         num_beams=1,
-    #         conv_mode="v1",
-    #     )
-
-    # else:
-    #     logger.info(f"Running local model {model_name_or_path}")
-
-    #     model_args = {
-    #         "model_name_or_path": model_name_or_path,
-    #         "device_map": "auto",
-    #         "torch_dtype": torch.bfloat16,
-    #     }
-
-    #     ###########################
-    #     ## Enable quantization
-    #     ###########################
-    #     if quantization:
-
-    #         if quantization == "bandb_4bit":
-    #             quantization_config = BitsAndBytesConfig(
-    #                 load_in_4bit=True,
-    #                 bnb_4bit_quant_type="nf4",
-    #                 bnb_4bit_use_double_quant=True,
-    #                 bnb_4bit_compute_dtype=torch.float16,
-    #             )
-    #             model_args["quantization_config"] = quantization_config
-    #             model_args["torch_dtype"] = torch.float16
-
-    #         elif quantization == "bandb_8bit":
-    #             quantization_config = BitsAndBytesConfig(
-    #                 load_in_8bit=True,
-    #             )
-    #             model_args["quantization_config"] = quantization_config
-    #             model_args["torch_dtype"] = torch.float16
-    #         else:
-    #             raise ValueError(f"Quantization {quantization} not supported.")
-
-    #     generator = SimpleVLMGenerator(**model_args)
-
-    #     responses = generator(
-    #         prompts,
-    #         images=None if dont_use_images else img_paths,
-    #         max_new_tokens=256,
-    #         temperature=0.3,
-    #         top_p=0.9,
-    #         do_sample=True,
-    #         skip_prompt=True,
-    #         batch_size="auto",
-    #         starting_batch_size=4,
-    #     )
+    responses = helper(
+        prompts=prompts,
+        image_paths=None if dont_use_images else img_paths,
+        show_progress_bar=True,
+        **generation_kwargs,
+    )
 
     test_df["response"] = responses
     merged_df = original_df.merge(test_df, how="left")
