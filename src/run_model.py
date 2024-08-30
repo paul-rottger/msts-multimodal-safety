@@ -16,6 +16,7 @@ from models import (
     MiniCPMHelper,
     IdeficsHelper,
     InternVL2Helper,
+    InternLMXComposerHelper,
     GPT4VisionHelper,
 )
 
@@ -135,6 +136,12 @@ def main(
     elif model_name_or_path == "OpenGVLab/InternVL2-8B":
         logger.info(f"Running local InternVL2 model {model_name_or_path}")
         helper = InternVL2Helper(model_name_or_path=model_name_or_path, device="cuda")
+    elif model_name_or_path == "internlm/internlm-xcomposer2d5-7b":
+        logger.info(f"Running local InternLM-XComposer model {model_name_or_path}")
+        helper = InternLMXComposerHelper(
+            model_name_or_path=model_name_or_path, device="cuda"
+        )
+
     elif "gpt" in model_name_or_path:
         logger.info(f"Running GPT model {model_name_or_path}")
         gpt_helper = GPT4VisionHelper(model_name=model_name_or_path)
