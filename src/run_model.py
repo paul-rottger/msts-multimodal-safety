@@ -139,7 +139,7 @@ def main(
             show_progress_bar=True,
             **generation_kwargs,
         )
-    elif "minicpm" in model_name_or_path:
+    elif "MiniCPM" in model_name_or_path:
         logger.info(f"Running local MiniCPM model {model_name_or_path}")
         minicpm_helper = MiniCPMHelper(
             model_name_or_path=model_name_or_path, device="cuda"
@@ -169,6 +169,7 @@ def main(
         )
     else:
         logger.exception(f"Model {model_name_or_path} not supported.")
+        raise ValueError(f"Model {model_name_or_path} not supported.")
 
     # if "MiniCPM" in model_name_or_path:
     #     logger.info(f"Running local MiniCPM model {model_name_or_path}")

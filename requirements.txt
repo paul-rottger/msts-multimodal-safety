@@ -10,3 +10,4 @@ timm==1.0.3
 ezcolorlog==1.0.3
 diffusers[torch]==0.30.0
 einops==0.8.0
+flash_attn==2.6.3
