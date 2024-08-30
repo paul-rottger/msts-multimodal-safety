@@ -10,7 +10,13 @@ import pandas as pd
 import logging
 import json
 
-from models import CambrianHelper, GPT4VisionHelper
+from models import (
+    CambrianHelper,
+    XGenHelper,
+    MiniCPMHelper,
+    IdeficsHelper,
+    GPT4VisionHelper,
+)
 
 # from simple_generation.vlm import SimpleVLMGenerator
 # from minicpm import MiniCPMHelper
@@ -110,14 +116,44 @@ def main(
         "max_new_tokens": 512,
         "do_sample": False,
         "num_beams": 3,
-        # "temperature": 0,
-        "use_cache": True,
     }
 
     if model_name_or_path == "nyu-visionx/cambrian-8b":
         logger.info(f"Running Cambrian model {model_name_or_path}")
         cambrian_helper = CambrianHelper(model_name=model_name_or_path, device="cuda")
+
+        generation_kwargs["use_cache"] = True
+
         responses = cambrian_helper(
+            prompts=prompts,
+            image_paths=None if dont_use_images else img_paths,
+            show_progress_bar=True,
+            **generation_kwargs,
+        )
+    elif "xgen-mm" in model_name_or_path:
+        logger.info(f"Running local XGEN-MM model {model_name_or_path}")
+        model_helper = XGenHelper(model_name_or_path=model_name_or_path, device="cuda")
+        responses = model_helper(
+            prompts=prompts,
+            image_paths=None if dont_use_images else img_paths,
+            show_progress_bar=True,
+            **generation_kwargs,
+        )
+    elif "minicpm" in model_name_or_path:
+        logger.info(f"Running local MiniCPM model {model_name_or_path}")
+        minicpm_helper = MiniCPMHelper(
+            model_name_or_path=model_name_or_path, device="cuda"
+        )
+        responses = minicpm_helper(
+            prompts=prompts,
+            image_paths=None if dont_use_images else img_paths,
+            show_progress_bar=True,
+            **generation_kwargs,
+        )
+    elif "Idefics3" in model_name_or_path:
+        logger.info(f"Running Idefics model {model_name_or_path}")
+        idefics_helper = IdeficsHelper(model_name_or_path, device="cuda")
+        responses = idefics_helper(
             prompts=prompts,
             image_paths=None if dont_use_images else img_paths,
             show_progress_bar=True,
