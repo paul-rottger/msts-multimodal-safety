@@ -5,7 +5,7 @@
         "img_dir": "./data/unsafe_images",
         "img_path_col": "unsafe_image_id",
         "prompt_col": "prompt_assistance_text",
-        "output_dir": "./output/prompt_assistance_text",
+        "output_dir": "./results/en",
         "quantization": false,
         "dont_use_images": false
     },
@@ -15,7 +15,107 @@
         "img_dir": "./data/unsafe_images",
         "img_path_col": "unsafe_image_id",
         "prompt_col": "prompt_intention_text",
-        "output_dir": "./output/prompt_intention_text",
+        "output_dir": "./results/en",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "2": {
+        "model_name_or_path": "internlm/internlm-xcomposer2d5-7b",
+        "test_set": "./data/prompts_220824.csv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_text",
+        "output_dir": "./results/en",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "3": {
+        "model_name_or_path": "internlm/internlm-xcomposer2d5-7b",
+        "test_set": "./data/prompts_220824.csv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_text",
+        "output_dir": "./results/en",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "4": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "./data/prompts_220824.csv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_text",
+        "output_dir": "./results/en",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "5": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "./data/prompts_220824.csv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_text",
+        "output_dir": "./results/en",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "6": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "./data/prompts_220824.csv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_text",
+        "output_dir": "./results/en",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "7": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "./data/prompts_220824.csv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_text",
+        "output_dir": "./results/en",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "8": {
+        "model_name_or_path": "Salesforce/xgen-mm-phi3-mini-instruct-interleave-r-v1.5",
+        "test_set": "./data/prompts_220824.csv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_text",
+        "output_dir": "./results/en",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "9": {
+        "model_name_or_path": "Salesforce/xgen-mm-phi3-mini-instruct-interleave-r-v1.5",
+        "test_set": "./data/prompts_220824.csv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_text",
+        "output_dir": "./results/en",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "10": {
+        "model_name_or_path": "HuggingFaceM4/Idefics3-8B-Llama3",
+        "test_set": "./data/prompts_220824.csv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_text",
+        "output_dir": "./results/en",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "11": {
+        "model_name_or_path": "HuggingFaceM4/Idefics3-8B-Llama3",
+        "test_set": "./data/prompts_220824.csv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_text",
+        "output_dir": "./results/en",
         "quantization": false,
         "dont_use_images": false
     }
