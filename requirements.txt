@@ -13,3 +13,4 @@ einops
 flash_attn==2.6.3
 decord
 open_clip_torch
+sentencepiece

@@ -75,6 +75,17 @@ def main(
     logger.info(f"Columns: {list(test_df.columns)}")
     logger.info(f"Sample row: {test_df.iloc[0].to_dict()}")
 
+    model_id = model_name_or_path.replace("/", "--")
+    prompt_col_id = prompt_col.replace(" ", "-").lower()
+
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(
+        output_dir, f"{model_id}_{img_path_col}_{prompt_col_id}.tsv"
+    )
+    if os.path.exists(output_file): 
+        logger.info(f"Output file exists already. Skipping the run.")
+        return
+
     ###########################
     ## Build image_paths
     ###########################
@@ -176,12 +187,6 @@ def main(
     # merged_df = merged_df[output_cols]
     merged_df.index = original_df.index
 
-    model_id = model_name_or_path.replace("/", "--")
-    prompt_col_id = prompt_col.replace(" ", "-").lower()
-
-    output_file = os.path.join(
-        output_dir, f"{model_id}_{img_path_col}_{prompt_col_id}.tsv"
-    )
     merged_df.to_csv(output_file, sep="\t")
 
 
