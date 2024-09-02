@@ -45,6 +45,9 @@ def main(
     config_id: str = None,
 ):
     if use_config_file:
+
+        config_id = str(config_id)
+
         # load main params from config file using config_id as index
         with open(config_file, "r") as f:
             config = json.load(f)
