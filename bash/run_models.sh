@@ -3,7 +3,7 @@
 echo `whereis python`
 echo "Launching script with sequential execution"
 
-set -e
+# set -e
 config_file=$1
 
 echo "BASH: Starting ${MODEL}"

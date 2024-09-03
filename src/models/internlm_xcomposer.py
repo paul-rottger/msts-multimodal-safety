@@ -23,9 +23,10 @@ class InternLMXComposerHelper:
     @torch.inference_mode()
     def _forward(self, prompt, image_path, **generation_kwargs):
         """Process a single image and prompt."""
-        response, _ = self.model.chat(
-            self.tokenizer, prompt, [image_path], **generation_kwargs
-        )
+        with torch.cuda.amp.autocast(dtype=torch.bfloat16):
+            response, _ = self.model.chat(
+                self.tokenizer, prompt, [image_path], **generation_kwargs
+            )
         return response
 
     def __call__(
@@ -45,7 +46,11 @@ class InternLMXComposerHelper:
             disable=not show_progress_bar,
             total=len(prompts),
         ):
-            res = self._forward(prompt, image_path, **generation_kwargs)
-            completions.append(res)
+            try:
+                res = self._forward(prompt, image_path, **generation_kwargs)
+                completions.append(res)
+            except Exception as e:
+                print("Failed", idx, prompt, image_path)
+                raise e 
 
         return completions
