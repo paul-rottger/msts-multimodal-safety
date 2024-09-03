@@ -8,7 +8,7 @@ models = [
     "OpenGVLab/InternVL2-8B",
     "openbmb/MiniCPM-V-2_6",
     "Salesforce/xgen-mm-phi3-mini-instruct-interleave-r-v1.5",
-    "HuggingFaceM4/Idefics3-8B-Llama3",
+    # "HuggingFaceM4/Idefics3-8B-Llama3",
 ]
 prompt_cols = ["prompt_assistance_text", "prompt_intention_text"]
 img_path_cols = ["unsafe_image_id"]
