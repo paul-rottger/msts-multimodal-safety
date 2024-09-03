@@ -82,7 +82,7 @@ def main(
     output_file = os.path.join(
         output_dir, f"{model_id}_{img_path_col}_{prompt_col_id}.tsv"
     )
-    if os.path.exists(output_file): 
+    if os.path.exists(output_file):
         logger.info(f"Output file exists already. Skipping the run.")
         return
 
@@ -155,15 +155,10 @@ def main(
         helper = InternLMXComposerHelper(
             model_name_or_path=model_name_or_path, device="cuda"
         )
-
     elif "gpt" in model_name_or_path:
         logger.info(f"Running GPT model {model_name_or_path}")
-        gpt_helper = GPT4VisionHelper(model_name=model_name_or_path)
-        responses = gpt_helper(
-            prompts,
-            image_paths=None if dont_use_images else img_paths,
-            max_new_tokens=256,
-        )
+        helper = GPT4VisionHelper(model_name=model_name_or_path)
+        generation_kwargs = dict(max_new_tokens=512)
     else:
         logger.exception(f"Model {model_name_or_path} not supported.")
         raise ValueError(f"Model {model_name_or_path} not supported.")

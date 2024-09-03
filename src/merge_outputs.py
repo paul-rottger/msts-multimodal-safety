@@ -2,16 +2,18 @@ from generate_config import models, prompt_cols
 import os
 import pandas as pd
 
-results_dir = ["./results"]
+results_dir = "./results"
 lang = "en"
 img_col = "unsafe_image_id"
+
+commercial_models = ["gpt-4o-2024-05-13"]
 
 
 def main():
     prompt_dfs = list()
     for prompt_col in prompt_cols:
         is_first = True
-        for model in models:
+        for model in models + commercial_models:
             model_id = model.replace("/", "--")
             df = pd.read_csv(
                 os.path.join(

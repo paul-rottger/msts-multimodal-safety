@@ -11,3 +11,7 @@ mkdir dependencies
 cd dependencies && git clone https://github.com/cambrian-mllm/cambrian.git
 pip install -r requirements.txt
 ```
+
+### Downloading and preprocessing the images
+
+Use the scripts `0_download_images.py` and `1_preprocess_images.py` to retrieve and prepare our collection of unsafe images.
