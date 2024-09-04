@@ -15,3 +15,4 @@ decord
 open_clip_torch
 sentencepiece
 python-dotenv
+qwen_vl_utils

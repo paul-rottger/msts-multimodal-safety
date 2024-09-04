@@ -17,6 +17,7 @@ from models import (
     IdeficsHelper,
     InternVL2Helper,
     InternLMXComposerHelper,
+    Qwen2VLHelper,
     GPT4VisionHelper,
 )
 
@@ -155,6 +156,9 @@ def main(
         helper = InternLMXComposerHelper(
             model_name_or_path=model_name_or_path, device="cuda"
         )
+    elif model_name_or_path == "Qwen/Qwen2-VL-7B-Instruct":
+        logger.info(f"Running Qwen2VL model {model_name_or_path}")
+        helper = Qwen2VLHelper(model_name_or_path=model_name_or_path, device="cuda")
     elif "gpt" in model_name_or_path:
         logger.info(f"Running GPT model {model_name_or_path}")
         helper = GPT4VisionHelper(model_name=model_name_or_path)

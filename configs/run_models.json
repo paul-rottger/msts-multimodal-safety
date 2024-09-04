@@ -100,7 +100,7 @@
         "dont_use_images": false
     },
     "10": {
-        "model_name_or_path": "HuggingFaceM4/Idefics3-8B-Llama3",
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
         "test_set": "./data/prompts_220824.csv",
         "img_dir": "./data/unsafe_images",
         "img_path_col": "unsafe_image_id",
@@ -110,7 +110,7 @@
         "dont_use_images": false
     },
     "11": {
-        "model_name_or_path": "HuggingFaceM4/Idefics3-8B-Llama3",
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
         "test_set": "./data/prompts_220824.csv",
         "img_dir": "./data/unsafe_images",
         "img_path_col": "unsafe_image_id",
