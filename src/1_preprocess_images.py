@@ -5,7 +5,7 @@ This script checks each image's validity and format.
 from PIL import Image
 import glob
 
-max_height = 2000
+max_height = 1400
 
 for img in glob.glob("./data/unsafe_images/*"):
     orig_img = Image.open(img)
