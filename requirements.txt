@@ -17,3 +17,4 @@ sentencepiece
 python-dotenv
 qwen_vl_utils
 google-generativeai
+anthropic

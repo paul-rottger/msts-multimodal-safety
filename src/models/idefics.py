@@ -1,12 +1,18 @@
-import requests
 import torch
 from PIL import Image
-from io import BytesIO
 
 from transformers import AutoProcessor, AutoModelForVision2Seq
 from transformers.image_utils import load_image
 from tqdm import tqdm
 from typing import List
+import os
+import sys
+
+current_folder = os.path.abspath(os.path.dirname(__file__))
+dep_folder = os.path.abspath(
+    os.path.join(current_folder, "../../dependencies/transformers")
+)
+sys.path.insert(0, os.path.join(os.getcwd(), "./dependencies/transformers"))
 
 
 class IdeficsHelper:
@@ -47,36 +53,3 @@ class IdeficsHelper:
             generated_ids, skip_special_tokens=True
         )
         return generated_texts
-
-    def __call__(
-        self,
-        prompts: List[str],
-        image_paths: List[str] = None,
-        show_progress_bar: bool = True,
-        **generation_kwargs
-    ):
-
-        completions = list()
-        for idx, prompt in tqdm(
-            enumerate(prompts),
-            desc="Prompt",
-            total=len(prompts),
-            disable=not show_progress_bar,
-        ):
-            image = None
-            if image_paths:
-                image_path = image_paths[idx]
-                image = Image.open(image_path).convert("RGB")
-
-            msgs = [{"role": "user", "content": prompt}]
-
-            res = self.model.chat(
-                image=image,
-                msgs=msgs,
-                tokenizer=self.tokenizer,
-                **generation_kwargs,
-            )
-
-            completions.append(res)
-
-        return completions
