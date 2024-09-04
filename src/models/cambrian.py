@@ -31,6 +31,8 @@ from cambrian.mm_utils import (
     get_model_name_from_path,
 )
 
+from .base import BaseHelper
+
 # cambrian-phi3-3b
 # conv_mode = "phi3"
 
@@ -82,7 +84,7 @@ def process(image, question, tokenizer, image_processor, model_config):
     return input_ids, image_tensor, image_size, prompt
 
 
-class CambrianHelper:
+class CambrianHelper(BaseHelper):
     def __init__(
         self,
         model_name: str,
@@ -118,25 +120,3 @@ class CambrianHelper:
         ].strip()
 
         return outputs
-
-    def __call__(
-        self,
-        prompts: List[str],
-        image_paths: List[str] = None,
-        show_progress_bar: bool = True,
-        **generation_kwargs
-    ):
-        """Generate completions using local images and prompts."""
-        assert len(prompts) == len(image_paths)
-
-        completions = list()
-        for idx, (prompt, image_path) in tqdm(
-            enumerate(zip(prompts, image_paths)),
-            desc="Item:",
-            disable=not show_progress_bar,
-            total=len(prompts),
-        ):
-            res = self._forward(prompt, image_path, **generation_kwargs)
-            completions.append(res)
-
-        return completions

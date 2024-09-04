@@ -14,7 +14,7 @@ from PIL import Image
 import torch
 from tqdm import tqdm
 
-# model_name_or_path = "Salesforce/xgen-mm-phi3-mini-instruct-interleave-r-v1.5"
+from .base import BaseHelper
 
 
 def apply_prompt_template(prompt):
@@ -26,7 +26,7 @@ def apply_prompt_template(prompt):
     return s
 
 
-class XGenHelper:
+class XGenHelper(BaseHelper):
 
     def __init__(self, model_name_or_path: str, device: str = "cuda"):
         self.model_name_or_path = model_name_or_path
@@ -76,25 +76,3 @@ class XGenHelper:
         )
 
         return outputs
-
-    def __call__(
-        self,
-        prompts: List[str],
-        image_paths: List[str] = None,
-        show_progress_bar: bool = True,
-        **generation_kwargs,
-    ):
-        """Generate completions using local images and prompts."""
-        assert len(prompts) == len(image_paths)
-
-        completions = list()
-        for idx, (prompt, image_path) in tqdm(
-            enumerate(zip(prompts, image_paths)),
-            desc="Item:",
-            disable=not show_progress_bar,
-            total=len(prompts),
-        ):
-            res = self._forward(prompt, image_path, **generation_kwargs)
-            completions.append(res)
-
-        return completions

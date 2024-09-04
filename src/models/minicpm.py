@@ -5,11 +5,12 @@ from transformers import AutoModel, AutoTokenizer
 import torch
 from PIL import Image
 
+from .base import BaseHelper
 
 logger = logging.getLogger(__name__)
 
 
-class MiniCPMHelper:
+class MiniCPMHelper(BaseHelper):
     def __init__(self, model_name_or_path: str, device: str):
         self.device = device
         self.model = AutoModel.from_pretrained(
@@ -22,35 +23,14 @@ class MiniCPMHelper:
 
         self.model.eval()
 
-    def __call__(
-        self,
-        prompts: List[str],
-        image_paths: List[str] = None,
-        show_progress_bar: bool = True,
-        **generation_kwargs
-    ):
-
-        completions = list()
-        for idx, prompt in tqdm(
-            enumerate(prompts),
-            desc="Prompt",
-            total=len(prompts),
-            disable=not show_progress_bar,
-        ):
-            image = None
-            if image_paths:
-                image_path = image_paths[idx]
-                image = Image.open(image_path).convert("RGB")
-
-            msgs = [{"role": "user", "content": prompt}]
-
-            res = self.model.chat(
-                image=image,
-                msgs=msgs,
-                tokenizer=self.tokenizer,
-                **generation_kwargs,
-            )
-
-            completions.append(res)
-
-        return completions
+    @torch.inference_mode()
+    def _forward(self, prompt, image_path, **generation_kwargs):
+        image = Image.open(image_path)
+        msgs = [{"role": "user", "content": prompt}]
+        res = self.model.chat(
+            image=image,
+            msgs=msgs,
+            tokenizer=self.tokenizer,
+            **generation_kwargs,
+        )
+        return res

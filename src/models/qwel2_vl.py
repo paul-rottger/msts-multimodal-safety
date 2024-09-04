@@ -2,7 +2,9 @@ from transformers import Qwen2VLForConditionalGeneration, AutoTokenizer, AutoPro
 from qwen_vl_utils import process_vision_info
 from typing import List
 import torch
+from tqdm import tqdm
 
+from .base import BaseHelper
 
 # The default range for the number of visual tokens per image in the model is 4-16384. You can set min_pixels and max_pixels according to your needs, such as a token count range of 256-1280, to balance speed and memory usage.
 # min_pixels = 256*28*28
@@ -10,7 +12,7 @@ import torch
 # processor = AutoProcessor.from_pretrained("Qwen/Qwen2-VL-7B-Instruct", min_pixels=min_pixels, max_pixels=max_pixels)
 
 
-class Qwen2VLHelper:
+class Qwen2VLHelper(BaseHelper):
     def __init__(self, model_name_or_path: str, device: str):
         self.device = device
         self.processor = AutoProcessor.from_pretrained(model_name_or_path)
@@ -32,7 +34,7 @@ class Qwen2VLHelper:
                         "type": "image",
                         "image": image_path,
                     },
-                    {"type": "text", "text": "Describe this image."},
+                    {"type": "text", "text": prompt},
                 ],
             }
         ]
@@ -61,31 +63,5 @@ class Qwen2VLHelper:
             generated_ids_trimmed,
             skip_special_tokens=True,
             clean_up_tokenization_spaces=False,
-        )
+        )[0]
         return response
-
-    def __call__(
-        self,
-        prompts: List[str],
-        image_paths: List[str] = None,
-        show_progress_bar: bool = True,
-        **generation_kwargs,
-    ):
-        """Generate completions using local images and prompts."""
-        assert len(prompts) == len(image_paths)
-
-        completions = list()
-        for idx, (prompt, image_path) in tqdm(
-            enumerate(zip(prompts, image_paths)),
-            desc="Item:",
-            disable=not show_progress_bar,
-            total=len(prompts),
-        ):
-            try:
-                res = self._forward(prompt, image_path, **generation_kwargs)
-                completions.append(res)
-            except Exception as e:
-                print("Failed", idx, prompt, image_path)
-                raise e
-
-        return completions

@@ -19,6 +19,7 @@ from models import (
     InternLMXComposerHelper,
     Qwen2VLHelper,
     GPT4VisionHelper,
+    GeminiHelper,
 )
 
 # from simple_generation.vlm import SimpleVLMGenerator
@@ -163,6 +164,10 @@ def main(
         logger.info(f"Running GPT model {model_name_or_path}")
         helper = GPT4VisionHelper(model_name=model_name_or_path)
         generation_kwargs = dict(max_new_tokens=512)
+    elif "gemini" in model_name_or_path:
+        logger.info(f"Running Gemini model {model_name_or_path}")
+        helper = GeminiHelper(model_name=model_name_or_path)
+        generation_kwargs = dict(max_new_tokens=512)
     else:
         logger.exception(f"Model {model_name_or_path} not supported.")
         raise ValueError(f"Model {model_name_or_path} not supported.")
@@ -171,6 +176,7 @@ def main(
         prompts=prompts,
         image_paths=None if dont_use_images else img_paths,
         show_progress_bar=True,
+        log_output_every=10,
         **generation_kwargs,
     )
 

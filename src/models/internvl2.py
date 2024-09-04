@@ -12,6 +12,8 @@ from transformers import AutoModel, AutoTokenizer
 from tqdm import tqdm
 from typing import List
 
+from .base import BaseHelper
+
 IMAGENET_MEAN = (0.485, 0.456, 0.406)
 IMAGENET_STD = (0.229, 0.224, 0.225)
 
@@ -102,7 +104,7 @@ def load_image(image_file, input_size=448, max_num=12):
     return pixel_values
 
 
-class InternVL2Helper:
+class InternVL2Helper(BaseHelper):
     def __init__(self, model_name_or_path: str, device: str = "cuda"):
 
         self.model = (
@@ -125,30 +127,8 @@ class InternVL2Helper:
         pixel_values = load_image(image_path, max_num=12).to(torch.bfloat16).cuda()
 
         # single-image single-round conversation (单图单轮对话)
-        question = "<image>\nPlease describe the image shortly."
+        question = f"<image>\n{prompt}"
         response = self.model.chat(
             self.tokenizer, pixel_values, question, generation_kwargs
         )
         return response
-
-    def __call__(
-        self,
-        prompts: List[str],
-        image_paths: List[str] = None,
-        show_progress_bar: bool = True,
-        **generation_kwargs,
-    ):
-        """Generate completions using local images and prompts."""
-        assert len(prompts) == len(image_paths)
-
-        completions = list()
-        for idx, (prompt, image_path) in tqdm(
-            enumerate(zip(prompts, image_paths)),
-            desc="Item:",
-            disable=not show_progress_bar,
-            total=len(prompts),
-        ):
-            res = self._forward(prompt, image_path, **generation_kwargs)
-            completions.append(res)
-
-        return completions
