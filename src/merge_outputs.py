@@ -1,4 +1,4 @@
-from generate_config import models, prompt_cols
+from generate_config import prompt_cols
 import os
 import pandas as pd
 
@@ -7,6 +7,14 @@ lang = "en"
 img_col = "unsafe_image_id"
 
 commercial_models = ["gpt-4o-2024-05-13"]
+models = [
+    "nyu-visionx/cambrian-8b",
+    "OpenGVLab/InternVL2-8B",
+    "openbmb/MiniCPM-V-2_6",
+    "Salesforce/xgen-mm-phi3-mini-instruct-interleave-r-v1.5",
+    # "internlm/internlm-xcomposer2d5-7b",
+    # "HuggingFaceM4/Idefics3-8B-Llama3",
+]
 
 
 def main():
@@ -24,11 +32,12 @@ def main():
 
             if is_first:
                 first_df = df.copy()
-                first_df[f"{model_id}-{prompt_col}"] = first_df["response"]
+                first_df[model_id] = first_df["response"]
+                first_df["prompt_type"] = prompt_col
                 first_df = first_df.drop(columns=["response"])
                 is_first = False
             else:
-                first_df[f"{model_id}-{prompt_col}"] = df["response"]
+                first_df[model_id] = df["response"]
 
         prompt_dfs.append(first_df)
 
