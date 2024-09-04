@@ -19,51 +19,34 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 
-class GeminiHelper:
+from .base import BaseHelper
+
+
+class GeminiHelper(BaseHelper):
     def __init__(self, model_name: str):
         self.model_name = model_name
         genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
         self.model = genai.GenerativeModel(model_name=model_name)
 
-    def __call__(
-        self,
-        prompts: List[str],
-        image_paths: List[str] = None,
-        max_new_tokens: int = 256,
-        show_progress_bar: bool = True,
-    ):
-        """Generate Gemini completions using local images and prompts."""
+    @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(10))
+    def _forward(self, prompt, image_path, **generation_kwargs):
+        """Process a single image and prompt."""
 
-        @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
-        def completion_with_backoff(prompt, img):
-            response = self.model.generate_content(
-                [prompt, img],
-                generation_config=genai.types.GenerationConfig(
-                    max_output_tokens=max_new_tokens
-                ),
-            )
-            text = (
-                response.text
-                if hasattr(response, "text")
-                else str(response.candidates[0].finish_reason)
-            )
-            return text
+        img = PIL.Image.open(image_path)
 
-        completions = list()
-        for idx, prompt in tqdm(
-            enumerate(prompts),
-            desc="Item",
-            total=len(prompts),
-            disable=not show_progress_bar,
-        ):
-            img = PIL.Image.open(image_paths[idx])
-            try:
-                response = completion_with_backoff(prompt, img)
-            except RetryError as e:
-                logger.warning(f"Retrying with Gemini API failed.")
-                logger.warning(f"Failing row {idx}, prompt: {prompt}")
-                response = "FAILED"
+        response = self.model.generate_content(
+            [prompt, img],
+            generation_config=genai.types.GenerationConfig(
+                max_output_tokens=generation_kwargs.get("max_new_tokens", 256)
+            ),
+        )
 
-            completions.append(response)
+        finish_reason = response.candidates[0].finish_reason
 
-        return completions
+        text = (
+            response.text
+            if finish_reason == genai.protos.Candidate.FinishReason.STOP
+            else str(finish_reason)
+        )
+
+        return text

@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 from tqdm import tqdm
+from tenacity import RetryError
 
 
 class BaseHelper(ABC):
@@ -23,7 +24,7 @@ class BaseHelper(ABC):
         completions = list()
         for idx, (prompt, image_path) in tqdm(
             enumerate(zip(prompts, image_paths)),
-            desc="Item:",
+            desc="Item",
             disable=not show_progress_bar,
             total=len(prompts),
         ):
@@ -36,6 +37,11 @@ class BaseHelper(ABC):
                     print(f"Image: {image_path}")
                     print(f"Completion: {res}")
                     print("#" * 50)
+            except RetryError as e:
+                print("Failed", idx, prompt, image_path)
+                print("[tenacity]: Retry error occurred")
+                print(e)
+                completions.append("API RetryError occurred.")
             except Exception as e:
                 print("Failed", idx, prompt, image_path)
                 raise e

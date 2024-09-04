@@ -20,6 +20,7 @@ from models import (
     Qwen2VLHelper,
     GPT4VisionHelper,
     GeminiHelper,
+    ClaudeHelper,
 )
 
 # from simple_generation.vlm import SimpleVLMGenerator
@@ -127,15 +128,17 @@ def main(
     logger.info(f"Sample prompt: {prompts[0]}")
 
     ###########################
-    ## Actual inference
+    ## Decoding parameters
     ###########################
-
     generation_kwargs = {
         "max_new_tokens": 512,
         "do_sample": False,
         "num_beams": 3,
     }
 
+    ###########################
+    ## Model selection
+    ###########################
     if model_name_or_path == "nyu-visionx/cambrian-8b":
         logger.info(f"Running Cambrian model {model_name_or_path}")
         generation_kwargs["use_cache"] = True
@@ -168,6 +171,10 @@ def main(
         logger.info(f"Running Gemini model {model_name_or_path}")
         helper = GeminiHelper(model_name=model_name_or_path)
         generation_kwargs = dict(max_new_tokens=512)
+    elif "claude" in model_name_or_path:
+        logger.info(f"Running Claude model {model_name_or_path}")
+        helper = ClaudeHelper(model_name=model_name_or_path)
+        generation_kwargs = dict(max_new_tokens=512)
     else:
         logger.exception(f"Model {model_name_or_path} not supported.")
         raise ValueError(f"Model {model_name_or_path} not supported.")
@@ -183,15 +190,7 @@ def main(
     test_df["response"] = responses
     merged_df = original_df.merge(test_df, how="left")
 
-    # output_cols = [
-    #     "Image ID",
-    #     "IMAGE to create MALICIOUS prompt",
-    #     prompt_col,
-    #     "response",
-    # ]
-    # merged_df = merged_df[output_cols]
     merged_df.index = original_df.index
-
     merged_df.to_csv(output_file, sep="\t")
 
 
