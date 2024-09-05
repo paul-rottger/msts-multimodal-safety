@@ -26,17 +26,6 @@ def apply_prompt_template(prompt):
     return s
 
 
-class EosListStoppingCriteria(StoppingCriteria):
-    def __init__(self, eos_sequence=[32007]):
-        self.eos_sequence = eos_sequence
-
-    def __call__(
-        self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs
-    ) -> bool:
-        last_ids = input_ids[:, -len(self.eos_sequence) :].tolist()
-        return self.eos_sequence in last_ids
-
-
 class XGenHelper(BaseHelper):
 
     def __init__(self, model_name_or_path: str, device: str = "cuda"):
@@ -54,6 +43,7 @@ class XGenHelper(BaseHelper):
         )
         self.tokenizer = self.model.update_special_tokens(self.tokenizer)
         self.tokenizer.padding_side = "left"
+        self.tokenizer.eos_token = "<|end|>"
 
         self.model.to(device).eval()
 
@@ -78,7 +68,7 @@ class XGenHelper(BaseHelper):
             **input_ids,
             image_size=[image.size],
             pad_token_id=self.tokenizer.pad_token_id,
-            stopping_criteria=[EosListStoppingCriteria()],
+            eos_token_id=self.tokenizer.eos_token_id,
             **generation_kwargs,
         )
         outputs = (
