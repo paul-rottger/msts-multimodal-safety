@@ -10,18 +10,24 @@ import pandas as pd
 import logging
 import json
 
-from models import (
-    CambrianHelper,
-    XGenHelper,
-    MiniCPMHelper,
-    IdeficsHelper,
-    InternVL2Helper,
-    InternLMXComposerHelper,
-    Qwen2VLHelper,
-    GPT4VisionHelper,
-    GeminiHelper,
-    ClaudeHelper,
-)
+from models import *
+
+# try:
+#     from models import CambrianHelper
+# except ImportError:
+#     print("Cambrian model not available.")
+
+# try:
+#     from models import Qwen2VLHelper
+# except ImportError:
+#     print("Qwen2VL model not available.")
+
+# try:
+#     print("Idefics model available.")
+#     from models import IdeficsHelper
+# except ImportError as e:
+#     print("Idefics model not available.")
+#     print()
 
 # from simple_generation.vlm import SimpleVLMGenerator
 # from minicpm import MiniCPMHelper

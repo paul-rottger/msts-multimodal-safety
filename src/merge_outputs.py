@@ -6,14 +6,18 @@ results_dir = "./results"
 lang = "en"
 img_col = "unsafe_image_id"
 
-commercial_models = ["gpt-4o-2024-05-13"]
+commercial_models = [
+    "gpt-4o-2024-05-13",
+    "gemini-1.5-pro",
+    "claude-3-5-sonnet-20240620",
+]
 models = [
     "nyu-visionx/cambrian-8b",
     "OpenGVLab/InternVL2-8B",
     "openbmb/MiniCPM-V-2_6",
     "Salesforce/xgen-mm-phi3-mini-instruct-interleave-r-v1.5",
-    # "internlm/internlm-xcomposer2d5-7b",
-    # "HuggingFaceM4/Idefics3-8B-Llama3",
+    "internlm/internlm-xcomposer2d5-7b",
+    "HuggingFaceM4/Idefics3-8B-Llama3",
 ]
 
 

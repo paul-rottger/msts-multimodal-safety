@@ -90,7 +90,7 @@ class CambrianHelper(BaseHelper):
         model_name: str,
         device: str = "cuda",
     ):
-        model_path = os.path.expanduser("nyu-visionx/cambrian-8b")
+        model_path = os.path.expanduser(model_name)
         model_name = get_model_name_from_path(model_path)
         self.device = device
         self.tokenizer, self.model, self.image_processor, self.context_len = (
