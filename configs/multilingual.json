@@ -1,0 +1,602 @@
+{
+    "0": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_german",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "1": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_spanish",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "2": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_french",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "3": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_chinese",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "4": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_korean",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "5": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_farsi",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "6": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_russian",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "7": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_italian",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "8": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_hindi",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "9": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_arabic",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "10": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_german",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "11": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_spanish",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "12": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_french",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "13": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_chinese",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "14": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_korean",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "15": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_farsi",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "16": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_russian",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "17": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_italian",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "18": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_hindi",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "19": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_arabic",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "20": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_german",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "21": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_spanish",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "22": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_french",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "23": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_chinese",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "24": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_korean",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "25": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_farsi",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "26": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_russian",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "27": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_italian",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "28": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_hindi",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "29": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_arabic",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "30": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_german",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "31": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_spanish",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "32": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_french",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "33": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_chinese",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "34": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_korean",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "35": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_farsi",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "36": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_russian",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "37": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_italian",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "38": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_hindi",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "39": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_arabic",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "40": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_german",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "41": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_spanish",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "42": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_french",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "43": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_chinese",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "44": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_korean",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "45": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_farsi",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "46": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_russian",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "47": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_italian",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "48": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_hindi",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "49": {
+        "model_name_or_path": "OpenGVLab/InternVL2-8B",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_arabic",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "50": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_german",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "51": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_spanish",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "52": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_french",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "53": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_chinese",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "54": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_korean",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "55": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_farsi",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "56": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_russian",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "57": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_italian",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "58": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_hindi",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    },
+    "59": {
+        "model_name_or_path": "Qwen/Qwen2-VL-7B-Instruct",
+        "test_set": "data/MSTS_prompts_translations.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_arabic",
+        "output_dir": "./results/multilingual",
+        "quantization": false,
+        "dont_use_images": false
+    }
+}
