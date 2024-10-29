@@ -52,6 +52,7 @@ def main(
     use_config_file: bool = False,
     config_file: str = None,
     config_id: str = None,
+    overwrite: bool = False,
 ):
     if use_config_file:
 
@@ -79,7 +80,12 @@ def main(
 
     logger.info(f"Are use using images? {not dont_use_images}")
 
-    test_df = pd.read_csv(test_set, index_col="case_id")
+    if test_set.endswith(".csv"):
+        test_df = pd.read_csv(test_set, index_col="case_id")
+    elif test_set.endswith(".tsv"):
+        test_df = pd.read_csv(test_set, sep="\t", index_col="case_id")
+    else:
+        raise ValueError("Unsupported file format. Only .csv and .tsv are supported.")
     logger.info(f"Loaded {len(test_df)} rows.")
     logger.info(f"Columns: {list(test_df.columns)}")
     logger.info(f"Sample row: {test_df.iloc[0].to_dict()}")
@@ -91,7 +97,7 @@ def main(
     output_file = os.path.join(
         output_dir, f"{model_id}_{img_path_col}_{prompt_col_id}.tsv"
     )
-    if os.path.exists(output_file):
+    if os.path.exists(output_file) and not overwrite:
         logger.info(f"Output file exists already. Skipping the run.")
         return
 
@@ -185,19 +191,40 @@ def main(
         logger.exception(f"Model {model_name_or_path} not supported.")
         raise ValueError(f"Model {model_name_or_path} not supported.")
 
-    responses = helper(
-        prompts=prompts,
-        image_paths=None if dont_use_images else img_paths,
-        show_progress_bar=True,
-        log_output_every=10,
-        **generation_kwargs,
-    )
+    if "gpt" not in model_name_or_path:
+        responses = helper(
+            prompts=prompts,
+            image_paths=None if dont_use_images else img_paths,
+            show_progress_bar=True,
+            log_output_every=10,
+            **generation_kwargs,
+        )
+        test_df["response"] = responses
+        merged_df = original_df.merge(test_df, how="left")
 
-    test_df["response"] = responses
-    merged_df = original_df.merge(test_df, how="left")
+        merged_df.index = original_df.index
+        merged_df.to_csv(output_file, sep="\t")
+    else:
+        json_lines = helper.get_batch_lines(
+            case_ids=test_df.index.tolist(),
+            prompts=prompts,
+            image_paths=None if dont_use_images else img_paths,
+            **generation_kwargs,
+        )
 
-    merged_df.index = original_df.index
-    merged_df.to_csv(output_file, sep="\t")
+        chunk_size = 50
+        for i in range(0, len(json_lines), chunk_size):
+            chunk = json_lines[i : i + chunk_size]
+            start_idx = i
+            end_idx = min(i + chunk_size - 1, len(json_lines) - 1)
+            output_file = os.path.join(
+                output_dir,
+                f"{model_id}_{img_path_col}_{prompt_col_id}_{start_idx}-{end_idx}.jsonl",
+            )
+
+            logger.info(f"Writing {len(chunk)} lines to {output_file}")
+            with open(output_file, "w") as f:
+                f.write("\n".join(chunk))
 
 
 if __name__ == "__main__":
