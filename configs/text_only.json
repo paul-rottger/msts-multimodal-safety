@@ -1,0 +1,22 @@
+{
+    "0": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/msts_prompts_main_301024.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_assistance_text",
+        "output_dir": "./results/text_only",
+        "quantization": false,
+        "dont_use_images": true
+    },
+    "1": {
+        "model_name_or_path": "openbmb/MiniCPM-V-2_6",
+        "test_set": "data/msts_prompts_main_301024.tsv",
+        "img_dir": "./data/unsafe_images",
+        "img_path_col": "unsafe_image_id",
+        "prompt_col": "prompt_intention_text",
+        "output_dir": "./results/text_only",
+        "quantization": false,
+        "dont_use_images": true
+    }
+}

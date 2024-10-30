@@ -19,15 +19,19 @@ class BaseHelper(ABC):
         **generation_kwargs,
     ):
         """Generate completions using local images and prompts."""
-        assert len(prompts) == len(image_paths)
+
+        if image_paths is not None:
+            assert len(prompts) == len(image_paths)
 
         completions = list()
-        for idx, (prompt, image_path) in tqdm(
-            enumerate(zip(prompts, image_paths)),
+        for idx, prompt in tqdm(
+            enumerate(prompts),
             desc="Item",
             disable=not show_progress_bar,
             total=len(prompts),
         ):
+            image_path = image_paths[idx] if image_paths else None
+
             try:
                 res = self._forward(prompt, image_path, **generation_kwargs)
                 completions.append(res)

@@ -55,6 +55,22 @@ def main(output_file: str = "./configs/run_models.json", config: str = "default"
                 "dont_use_images": False,
             }
             i += 1
+    else:
+        models = ["openbmb/MiniCPM-V-2_6"]
+
+        for pcol, model, icol, img_dir in product(prompt_cols, models, img_path_cols, img_dirs):
+            runs[i] = {
+                "model_name_or_path": model,
+                "test_set": "data/msts_prompts_main_301024.tsv",
+                "img_dir": img_dir,
+                "img_path_col": icol,
+                "prompt_col": pcol,
+                "output_dir": f"./results/text_only",
+                "quantization": False,
+                "dont_use_images": True,
+            }
+            i += 1
+        
 
 
     with open(output_file, "w") as f:

@@ -77,8 +77,7 @@ def main(
     logger.info(f"Prompt column: {prompt_col}")
     logger.info(f"Output directory: {output_dir}")
     logger.info(f"Quantization: {quantization}")
-
-    logger.info(f"Are use using images? {not dont_use_images}")
+    logger.info(f"Are we using images? {not dont_use_images}")
 
     if test_set.endswith(".csv"):
         test_df = pd.read_csv(test_set, index_col="case_id")
