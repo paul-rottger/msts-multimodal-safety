@@ -4,7 +4,7 @@
         "test_set": "data/msts_prompts_main_301024.tsv",
         "img_dir": "./data/unsafe_images",
         "img_path_col": "unsafe_image_id",
-        "prompt_col": "prompt_assistance_text",
+        "prompt_col": "unsafe_prompt_assistance_textonly",
         "output_dir": "./results/text_only",
         "quantization": false,
         "dont_use_images": true
@@ -14,7 +14,7 @@
         "test_set": "data/msts_prompts_main_301024.tsv",
         "img_dir": "./data/unsafe_images",
         "img_path_col": "unsafe_image_id",
-        "prompt_col": "prompt_intention_text",
+        "prompt_col": "unsafe_prompt_intention_textonly",
         "output_dir": "./results/text_only",
         "quantization": false,
         "dont_use_images": true

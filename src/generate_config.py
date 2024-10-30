@@ -64,7 +64,7 @@ def main(output_file: str = "./configs/run_models.json", config: str = "default"
                 "test_set": "data/msts_prompts_main_301024.tsv",
                 "img_dir": img_dir,
                 "img_path_col": icol,
-                "prompt_col": pcol,
+                "prompt_col": f"unsafe_{pcol}only",
                 "output_dir": f"./results/text_only",
                 "quantization": False,
                 "dont_use_images": True,
