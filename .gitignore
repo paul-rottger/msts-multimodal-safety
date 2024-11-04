@@ -6,4 +6,8 @@ results
 dependencies
 dependencies/*
 /env
-data
+/data/cache
+/data/translation_prompts
+/data/translation_responses
+.env
+/cache
