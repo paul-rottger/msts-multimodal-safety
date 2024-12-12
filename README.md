@@ -40,7 +40,7 @@ mkdir dependencies
 cd dependencies && git clone https://github.com/cambrian-mllm/cambrian.git
 ```
 
-Also, note that to this date (Sept 5th, 2024), Idefics3 is supported by installing transformers from source at this PR:
+Also, note that to this date (Sept 5th, 2024), Idefics3 is supported by installing transformers from the source at this PR:
 
 https://github.com/huggingface/transformers/pull/32473
 
@@ -51,9 +51,9 @@ Use the scripts `0_download_images.py` and `1_preprocess_images.py` to retrieve 
 
 ### Running the experiments
 
-To run the experiments, we use python scripts (`src`) that are invoked through bash runners (`bash`). The input args to python scripts are controlled by config json files (`configs`).
+To run the experiments, we use Python scripts (`src`) invoked through bash runners (`bash`). The input args to Python scripts are controlled by config JSON files (`configs`).
 
-Each bash runner as a telling name to help understand what is being run:
+Each bash runner has a telling name to help understand what is being run:
 - `run_\*`: runs an arbitrary commercial model;
 - `run_models`: run all local models (use `sbatch_run_models` if you have access to SLURM);
 - `text-only_runs` and `multilingual_runs` run model completions with the text-only and multilingual prompt variants.
