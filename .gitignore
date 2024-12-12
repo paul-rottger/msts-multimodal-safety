@@ -9,5 +9,6 @@ dependencies/*
 /data/cache
 /data/translation_prompts
 /data/translation_responses
+/data/temp
 .env
 /cache
