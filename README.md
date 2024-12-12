@@ -1,3 +1,34 @@
+# MSTS: A Multimodal Safety Test Suite for Vision-Language Models
+
+This repo contains data and code for our paper "MSTS: A Multimodal Safety Test Suite for Vision-Language Models".
+
+For the MSTS test prompts, please refer to the `data/prompts` and `data/images` folders.
+
+
+## Repo Structure
+
+├── bash/                   # Shell scripts for running experiments
+├── configs/                # Configs for running experiments
+├── data/                 
+│   ├── auto_eval/         # Automated response classifications
+│   ├── images/            # MSTS test images
+│   ├── prompts/           # MSTS test prompts
+│   └── response_annotations/  # Annotated model responses
+├── notebooks/             # Jupyter notebooks for analysis
+└── src/                   # Python source code for running experiments
+├── .gitignore            # Git ignore rules
+├── README.md             # This file
+└── requirements.txt      # Python dependencies
+
+
+
+
+
+GIUSEPPE TO UPDATE THE BELOW
+
+
+
+
 ## Getting Started
 
 Create a new virtual environment and install torch in it using the method that fits best for you.
