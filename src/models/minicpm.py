@@ -24,12 +24,12 @@ class MiniCPMHelper(BaseHelper):
         self.model.eval()
 
     @torch.inference_mode()
-    def _forward(self, prompt, image_path: str=None, **generation_kwargs):
-        
+    def _forward(self, prompt, image_path: str = None, **generation_kwargs):
+
         image = None
         if image_path:
             image = Image.open(image_path)
-            
+
         msgs = [{"role": "user", "content": prompt}]
         res = self.model.chat(
             image=image,

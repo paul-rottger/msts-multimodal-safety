@@ -38,8 +38,23 @@ def main(output_file: str = "./configs/run_models.json", config: str = "default"
             }
             i += 1
     elif config == "multilingual":
-        models = ["openbmb/MiniCPM-V-2_6", "OpenGVLab/InternVL2-8B", "Qwen/Qwen2-VL-7B-Instruct"]
-        langs = ["german", "spanish", "french", "chinese", "korean", "farsi", "russian", "italian", "hindi", "arabic"]
+        models = [
+            "openbmb/MiniCPM-V-2_6",
+            "OpenGVLab/InternVL2-8B",
+            "Qwen/Qwen2-VL-7B-Instruct",
+        ]
+        langs = [
+            "german",
+            "spanish",
+            "french",
+            "chinese",
+            "korean",
+            "farsi",
+            "russian",
+            "italian",
+            "hindi",
+            "arabic",
+        ]
 
         for pcol, model, lang, icol, img_dir in product(
             prompt_cols, models, langs, img_path_cols, img_dirs
@@ -58,7 +73,9 @@ def main(output_file: str = "./configs/run_models.json", config: str = "default"
     else:
         models = ["openbmb/MiniCPM-V-2_6"]
 
-        for pcol, model, icol, img_dir in product(prompt_cols, models, img_path_cols, img_dirs):
+        for pcol, model, icol, img_dir in product(
+            prompt_cols, models, img_path_cols, img_dirs
+        ):
             runs[i] = {
                 "model_name_or_path": model,
                 "test_set": "data/msts_prompts_main_301024.tsv",
@@ -70,12 +87,9 @@ def main(output_file: str = "./configs/run_models.json", config: str = "default"
                 "dont_use_images": True,
             }
             i += 1
-        
-
 
     with open(output_file, "w") as f:
         json.dump(runs, f, indent=4)
-
 
 
 if __name__ == "__main__":
