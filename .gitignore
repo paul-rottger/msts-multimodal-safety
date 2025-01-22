@@ -1,3 +1,5 @@
+__MACOSX/
+unsafe_images
 .DS_Store
 .ipynb_checkpoints/
 __pycache__/
