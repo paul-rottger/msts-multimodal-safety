@@ -45,7 +45,7 @@ save_directory = "./data/unsafe_images"
 image_df = pd.read_csv(df_path)
 
 # create the save directory if it does not exist
-os.makedirs(save_directory, exists_ok=True)
+os.makedirs(save_directory, exist_ok=True)
 
 # sample 10 for testing
 # image_df = image_df.sample(10, random_state=42)
