@@ -4,6 +4,8 @@ This repo contains data and code for our paper "[MSTS: A Multimodal Safety Test 
 
 For the MSTS test prompts, please refer to the `data/prompts` and `data/images` folders.
 
+Also find our dataset on [huggingface](https://huggingface.co/datasets/felfri/MSTS).
+
 
 ## Repo Structure
 
