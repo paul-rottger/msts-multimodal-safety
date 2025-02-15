@@ -1,6 +1,6 @@
-# MSTS: A Multimodal Safety Test Suite for Vision-Language Models
+# MSTS: A Multimodal Safety Test Suite for Vision-Language Models in 11 Languages
 
-This repo contains data and code for our paper "MSTS: A Multimodal Safety Test Suite for Vision-Language Models".
+This repo contains data and code for our paper "MSTS: A Multimodal Safety Test Suite for Vision-Language Models in 11 Languages".
 
 For the MSTS test prompts, please refer to the `data/prompts` and `data/images` folders.
 
