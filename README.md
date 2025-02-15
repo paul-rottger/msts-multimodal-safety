@@ -1,10 +1,8 @@
 # MSTS: A Multimodal Safety Test Suite for Vision-Language Models
 
-This repo contains data and code for our paper "[MSTS: A Multimodal Safety Test Suite for Vision-Language Models](https://arxiv.org/abs/2501.10057)".
+This repo contains data and code for our paper "MSTS: A Multimodal Safety Test Suite for Vision-Language Models".
 
 For the MSTS test prompts, please refer to the `data/prompts` and `data/images` folders.
-
-Also find our dataset on [huggingface](https://huggingface.co/datasets/felfri/MSTS).
 
 
 ## Repo Structure
@@ -59,17 +57,3 @@ Each bash runner has a telling name to help understand what is being run:
 - `run_\*`: runs an arbitrary commercial model;
 - `run_models`: run all local models (use `sbatch_run_models` if you have access to SLURM);
 - `text-only_runs` and `multilingual_runs` run model completions with the text-only and multilingual prompt variants.
-
-## Citation Information
-Please consider citing our work if you use data and/or code from this repository.
-```bibtex
-@misc{röttger2025mstsmultimodalsafetytest,
-      title={MSTS: A Multimodal Safety Test Suite for Vision-Language Models}, 
-      author={Paul Röttger and Giuseppe Attanasio and Felix Friedrich and Janis Goldzycher and Alicia Parrish and Rishabh Bhardwaj and Chiara Di Bonaventura and Roman Eng and Gaia El Khoury Geagea and Sujata Goswami and Jieun Han and Dirk Hovy and Seogyeong Jeong and Paloma Jeretič and Flor Miriam Plaza-del-Arco and Donya Rooein and Patrick Schramowski and Anastassia Shaitarova and Xudong Shen and Richard Willats and Andrea Zugarini and Bertie Vidgen},
-      year={2025},
-      eprint={2501.10057},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2501.10057}, 
-}
-```
